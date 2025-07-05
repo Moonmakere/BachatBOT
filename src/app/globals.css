@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+.clash-font {
+  font-family: var(--font-clash-display);
+}
+
+.clash-font-regular {
+  font-family: var(--font-clash-display);
+  font-weight: 400;
+}
+
+.clash-font-medium {
+  font-family: var(--font-clash-display);
+  font-weight: 500;
+}
+
+.clash-font-semibold {
+  font-family: var(--font-clash-display);
+  font-weight: 600;
+}
+
+.clash-font-bold {
+  font-family: var(--font-clash-display);
+  font-weight: 700;
+}
+
+
+.zodiak-font {
+  font-family: var(--font-zodiak-variable);
+  font-weight: 400;
+}
+
+.zodiak-italic-font {
+  font-family: var(--font-zodiak-variable-italic);
+  font-style: italic; /* Important! */
+}
+
+.montserrat-font {
+  font-family: var(--font-montserrat-variable);
+}
+
+.montserrat-font-regular {
+  font-family: var(--font-montserrat-variable);
+  font-weight: 400;
+}
+
+.montserrat-font-medium {
+  font-family: var(--font-montserrat-variable);
+  font-weight: 500;
+}
+
+.montserrat-font-semibold {
+  font-family: var(--font-montserrat-variable);
+  font-weight: 600;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* globals.css */
+
+/* Hide scrollbar track and customize thumb for dark UI */
+::-webkit-scrollbar {
+  width: 8px; /* or set to 0 to completely hide it */
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Removes the white background */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2); /* Light thumb */
+  border-radius: 10px;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
