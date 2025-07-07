@@ -100,7 +100,7 @@ Create a `.env` file in the root directory and populate it with your credentials
 # .env (example)
 
 # MongoDB Connection String
-MONGODB_URI="mongodb+srv://user:password@cluster.mongodb.net/authDB?retryWrites=true&w=majority"
+MONGODB_URI="ENTER-YOUR-MONGODB-URI"
 
 # JWT Secret for Authentication
 JWT_SECRET="this-is-a-very-strong-and-long-secret-key-for-jwt-signing"
