@@ -5,12 +5,13 @@ import Sidebar from "../../components/layout/Sidebar";
 import Image from "next/image";
 import bulkVerify from "../../../public/auth/Signup.svg";
 import { AccountingFileUpload } from "../../components/ui/fileUpload/accountingUpload";
+import { AccountingFormInput } from "../../components/ui/textUpload"
 import { IconArrowLeft } from "@tabler/icons-react";
- 
+
 export default function Bulk() {
   const [showFileUpload, setShowFileUpload] = useState(false);
   const [showPasteEmails, setShowPasteEmails] = useState(false);
- 
+
   return (
     <div className="flex h-screen bg-gray-100">
       <Sidebar />
@@ -92,6 +93,7 @@ export default function Bulk() {
                     <IconArrowLeft className="mr-1" size={40} />
                   </button>
                 </div>
+                <AccountingFormInput />
               </motion.div>
             )}
           </AnimatePresence>

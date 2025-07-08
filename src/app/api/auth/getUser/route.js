@@ -1,4 +1,4 @@
-// app/api/auth/getUser/route.js
+// pages/api/user/getUser.js
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import connectDB from "../../../../lib/mongoDb";
@@ -8,19 +8,20 @@ export async function GET(request) {
   try {
     await connectDB();
 
-    const token = request.cookies.get("token")?.value;
-
+    // Extract token from cookies
+    const token = request.cookies.get('token')?.value;
     if (!token) {
       return NextResponse.json({ error: "No token provided" }, { status: 401 });
     }
 
+    // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.userId);
-
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
+    // Send user data (exclude password)
     const userData = {
       firstName: user.firstName,
       lastName: user.lastName,
@@ -39,7 +40,7 @@ export async function GET(request) {
       companyName: user.companyName,
       businessType: user.businessType,
       phoneNumber: user.phoneNumber,
-      alternatePhone: user.alternatePhone,
+      alternatePhone: user.alternatePhone
     };
 
     return NextResponse.json({ user: userData }, { status: 200 });

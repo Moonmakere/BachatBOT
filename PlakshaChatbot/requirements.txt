@@ -4,8 +4,3 @@ langchain-google-genai
 protobuf<4.0.0
 tenacity<9
 python-dotenv
-langchain-community
-langchain
-sentence-transformers
-faiss-cpu
-pypdf

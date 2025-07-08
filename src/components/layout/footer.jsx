@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-gray-500  px-6 py-10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8">
         <div>
-          <h2 className="text-3xl montserrat-font-medium mb-2">EZTax</h2>
+          <h2 className="text-3xl montserrat-font-medium mb-2">Logo</h2>
           <p className="text-black mt-1 montserrat-font-medium">© 2025 DataShield Solutions Inc.</p>
           <a
             href="https://linkedin.com"

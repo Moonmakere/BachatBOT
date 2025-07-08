@@ -43,7 +43,7 @@ llm = ChatGoogleGenerativeAI(model="gemini-pro-vision", temperature=0.7)
 import os
 from langchain_community.document_loaders import PyPDFLoader
 
-pdf_folder = "C://Users//AkshatSaraswat//Desktop//EZTAX-INDIA//tax_pdfs"  # Corrected to folder path
+pdf_folder = "C://Users//AkshatSaraswat//Desktop//PUHS//tax_pdfs"  # Corrected to folder path
 
 # Ensure the folder exists
 if not os.path.exists(pdf_folder):

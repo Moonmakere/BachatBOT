@@ -54,7 +54,7 @@ const LoginForm = ({ toggleForm }: LoginFormProps) => {
   
       toast.success("Login successful!");
       localStorage.setItem("token", response.data.token); // Store token
-      router.push("/upload");
+      router.push("/dashboard");
     } catch (error) {
       if(error instanceof Error){
         toast.error("Invalid credentials");

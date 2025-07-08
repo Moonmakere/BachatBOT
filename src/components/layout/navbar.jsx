@@ -74,7 +74,7 @@ const Navbar = () => {
               href="/"
               className="montserrat-font-medium text-3xl text-white"
             >
-              BachatBot
+              Logo
             </Link>
 
             {/* Nav Items */}

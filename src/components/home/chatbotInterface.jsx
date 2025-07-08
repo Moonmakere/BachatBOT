@@ -1,30 +1,19 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { IoIosChatbubbles, IoMdClose } from "react-icons/io";
+import React, { useState } from "react";
+import { IoIosChatbubbles , IoMdClose  } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
-import FormattedSummary  from "./formattedSummary";
 
 export const ChatbotInterface = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userMessage, setUserMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
-  const messagesEndRef = useRef(null);
-
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [chatHistory]);
 
   const sendMessage = async () => {
     if (!userMessage.trim()) return;
 
     const newHistory = [...chatHistory, { sender: "user", text: userMessage }];
     setChatHistory(newHistory);
-    setUserMessage("");
 
     try {
       const res = await fetch("/api/chat", {
@@ -36,19 +25,19 @@ export const ChatbotInterface = () => {
       });
 
       const data = await res.json();
-      const answer = data.answer || "Sorry, I couldn't understand.";
-
       setChatHistory((prev) => [
         ...prev,
-        { sender: "bot", text: answer, formatted: true },
+        { sender: "bot", text: data.answer || "Sorry, I couldn't understand." },
       ]);
     } catch (err) {
       console.error("Frontend error:", err);
       setChatHistory((prev) => [
         ...prev,
-        { sender: "bot", text: "There was an error. Please try again.", formatted: false },
+        { sender: "bot", text: "There was an error. Please try again." },
       ]);
     }
+
+    setUserMessage("");
   };
 
   const handleKeyDown = (e) => {
@@ -65,7 +54,7 @@ export const ChatbotInterface = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-full shadow-lg z-50"
       >
-        <IoIosChatbubbles className="w-6 h-6" />
+        <IoIosChatbubbles className="w-6 h-6"/>
       </button>
 
       {/* Chat Modal */}
@@ -75,45 +64,40 @@ export const ChatbotInterface = () => {
           <div className="flex items-center justify-between px-4 py-3 border-b">
             <h2 className="text-xl montserrat-font-medium text-white">Ask the Tax Bot</h2>
             <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-red-500 text-xl">
-              <IoMdClose />
+              <IoMdClose/>
             </button>
           </div>
 
           {/* Chat History */}
-          <div className="flex-1 overflow-y-auto px-4 py-2 scrollbar-hide">
+          <div className="flex-1 max-h-100 overflow-y-auto px-4 py-2 scrollbar-hide">
             {chatHistory.map((msg, i) => (
               <div
                 key={i}
-                className={`mb-3 text-sm ${msg.sender === "user" ? "text-right text-blue-600" : "text-left text-gray-800"
-                  }`}
+                className={`mb-3 text-sm ${
+                  msg.sender === "user" ? "text-right text-blue-600" : "text-left text-gray-800"
+                }`}
               >
-                <div className="inline-block montserrat-font-medium bg-gray-100 px-3 py-2 rounded-lg max-w-[80%] text-md">
-                  <strong>{msg.sender === "user" ? "You" : "Bot"}:</strong>{" "}
-                  {msg.sender === "bot" && msg.formatted ? (
-                    <FormattedSummary text={msg.text} />
-                  ) : (
-                    msg.text
-                  )}
+                <div className="inline-block montserrat-font-medium  bg-gray-100 px-3 py-2 rounded-lg max-w-[80%] text-md ">
+                  <strong>{msg.sender === "user" ? "You" : "Bot"}:</strong> {msg.text}
                 </div>
               </div>
             ))}
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
-          <div className="flex gap-2 p-2 montserrat-font-medium">
+          <div className="flex gap-2 p-2 montserrat-font-medium ">
             <input
               value={userMessage}
               onChange={(e) => setUserMessage(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="flex-1 border rounded-2xl px-3 py-2 focus:outline-none text-white bg-transparent"
+              className="flex-1 border rounded-2xl px-3 py-2 focus:outline-none text-white"
               placeholder="Type your question..."
             />
             <button
               onClick={sendMessage}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 rounded-2xl"
             >
-              <IoSend />
+            <IoSend/>
             </button>
           </div>
         </div>

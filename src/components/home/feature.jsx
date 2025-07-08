@@ -5,7 +5,7 @@ export function FeatureSection() {
     <div className="bg-black" id="features">
       <div className="max-w-5xl mx-auto px-8 pb-40">
         <h2 className="text-6xl font-bold text-white text-center pb-12 montserrat-font-medium">
-          Everything You Need, All In One App
+          Key Features
         </h2>
         <HoverEffect items={features} />
       </div>
@@ -13,36 +13,35 @@ export function FeatureSection() {
   );
 }
 
-// --- NEW & IMPROVED FEATURES FOR BACHAT BOT ---
 export const features = [
   {
-    title: "Smart Tax Optimizer",
+    title: "Automated Tax Analysis",
     description:
-      "Bachat Bot analyzes your finances to recommend the best tax regime (Old vs. New) and suggests investments in ELSS, PPF, and NPS to maximize your savings.",
+      "Analyzes your income, expenses, and investments to automatically identify applicable deductions under Indian tax laws.",
   },
   {
-    title: "Personalized Banking System",
+    title: "Tax-Saving Suggestions",
     description:
-      "Get a complete, real-time view of your financial life. Track your bank accounts, investments, and spending, all in one secure place.",
+      "Get personalized recommendations on where to invest — like ELSS, PPF, and more — to maximize your tax savings ",
   },
   {
-    title: "AI-Powered Recommendations",
+    title: "No Human Accountant ",
     description:
-      "Beyond taxes, get personalized suggestions for the best credit cards, savings accounts, and insurance policies tailored to your lifestyle and financial goals.",
+      "Say goodbye to traditional accountants. Our AI handles everything from document analysis to tax optimization",
   },
   {
-    title: "Your 24/7 Financial Dost",
+    title: "OCR-powered Reading",
     description:
-      "Ask anything in plain English, from 'Which insurance is best for my parents?' to 'How much more can I invest in 80C?'. Your personal finance expert is always available.",
+      "Upload bills, salary slips, or Form 16 — our AI reads and understands them to extract relevant financial data.",
   },
   {
-    title: "Bank-Grade Security",
+    title: "Income Categorization",
     description:
-      "Your trust is our priority. We use industry-leading encryption and security protocols to ensure your financial data is always safe and confidential.",
+      "Classifies your income into salary, business, capital gains, and other heads to apply the correct tax rules automatically.",
   },
   {
-    title: "AI Insurance Advisor",
+    title: "Built for Indian Tax System",
     description:
-      "Built from the ground up for the Indian financial landscape. We understand the nuances of local tax laws, banking products, and investment options.",
+      "Designed specifically for the Indian Income Tax Act, keeping up-to-date with the latest laws, limits, and exemptions.",
   },
 ];
