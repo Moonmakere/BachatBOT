@@ -175,13 +175,9 @@ This repository has been prepared for the AI Hiring Show evaluation process. It 
 > **For a complete, live demonstration of the end-to-end system and a deep dive into our core AI pipeline, please contact a member of our team.**
 
 ## 📞 Contact & Technical Support
-For any technical questions, setup assistance, or to request a live demonstration, please feel free to reach out:
+For any technical questions, setup assistance, or to request a live demonstration, please feel free to reach out to the following:
 
 -   **Email**: [akshatsaraswat1234@gmail.com](mailto:akshatsaraswat1234@gmail.com)
 -   **Phone**: `+91 6260109043`
 
-## 👥 The Team
-*   **Akshat Saraswat**
-*   **Belo Abhigyaan**
-*   **Divyanshu Kasherwal**
-*   **Shreshtha Kumar Gupta**
+
