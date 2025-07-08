@@ -1,3 +1,4 @@
+
 # BachatBot: Your AI-Powered Financial Assistant
 
 <p align="center">
@@ -6,7 +7,7 @@
 
 **🏆 1st Place Winner (out of 1000+ Teams) | AI Hiring Show by Rabbitt Learning 🏆**
 
-**BachatBot** is a sophisticated, AI-driven financial assistant designed to demystify personal finance for the Indian market. By integrating advanced AI, a secure microservices architecture, and an intuitive user interface, BachatBot provides personalized banking, insurance, and tax advisory services, empowering users to make brilliant financial decisions with ease and confidence.
+**BachatBot** is a sophisticated, AI-driven financial assistant designed to demystify personal finance for the Indian market. Born from the **AI Hiring Show by Rabbitt Learning**, where it secured **1st Place out of over 1000 participating teams**, BachatBot provides personalized banking, insurance, and tax advisory services, empowering users to make brilliant financial decisions with ease and confidence.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -29,22 +30,18 @@ The Indian financial landscape is a maze of complex products and dense jargon. T
 BachatBot is an AI-powered system designed to be the ultimate financial co-pilot. It understands financial documents, automates data analysis, and offers hyper-personalized tax-saving and investment advice, all within a secure and user-friendly platform.
 
 ### Core Features:
--   **🤖 AI Document Intelligence**: Securely upload financial documents. Our AI pipeline intelligently analyzes the document's content, extracts key data points, and structures them for further use, eliminating manual entry.
+-   **🤖 Advanced OCR & Document Intelligence**: Securely upload financial documents (bills, salary slips, investment statements). Our AI pipeline, powered by **EasyOCR** and **OpenCV** for image processing and text extraction, intelligently analyzes the document. The extracted text is then structured by **Google Gemini**, turning unstructured data into actionable insights.
 -   **💬 Intelligent Tax Chatbot (RAG-Powered)**: Ask complex questions about Indian tax law in plain English. Our chatbot uses a Retrieval-Augmented Generation (RAG) pipeline to provide accurate, context-aware answers from a specialized knowledge base.
 -   **💸 Dual-Regime Tax Calculator & Advisor**: Input your financial data to see a real-time, side-by-side comparison of your tax liability under the Old and New Indian tax regimes.
 -   **📈 Personalized AI Reports**: Generate comprehensive financial reports with actionable investment and tax-saving strategies, powered by Google Gemini.
+-   **☂️ AI Insurance Advisor**: A dedicated module that connects to a Streamlit-powered interface, helping users find the best insurance policies (term, health, etc.) tailored to their age, income, and risk profile.
 -   **🔒 Secure User Authentication & Profile Management**: A complete auth system with JWT, email verification, and a detailed user profile manager.
-
-## 📊 The Impact: Tangible Financial Benefits
-
-Our solution translates directly into measurable savings for the user.
-> In a country where the average income of a middle-class family in a metropolitan area is ₹35,000, BachatBot can help users save approximately **₹15,000 upfront** and **₹8,000 per year** by providing AI-driven financial insights at a fraction of the cost of a traditional advisor. This represents a potential saving of **22.8% of income**.
 
 ## 🏗️ Technical Architecture
 
 BachatBot employs a robust microservices architecture, separating the frontend presentation layer from the specialized AI/ML backend services. This design ensures scalability, maintainability, and resilience.
-![Architecture Workflow](Architecture%20BachatBot.png)
 
+![Architecture Workflow](Architecture%20BachatBot.png)
 
 ## 🔬 Technical Deep Dive
 
@@ -63,8 +60,8 @@ Our implementation showcases a modern, full-stack approach to building AI applic
 -   **Session Management**: JWTs are stored in `HttpOnly` cookies for enhanced security against XSS attacks.
 -   **Protected Routes**: The `middleware.js` file intercepts requests to protected pages (`/dashboard`, `/profile`), verifying the JWT cookie before allowing access and redirecting unauthenticated users.
 
-#### 3. AI/ML Microservices (Python, Flask)
--   **Document Intelligence Service**: This microservice is responsible for processing uploaded financial documents. It leverages a powerful Large Language Model (LLM) like **Google Gemini** to understand the context and content of the document, extracting key financial data (like income, expenses, investments) and converting it into a structured JSON format.
+#### 3. AI/ML Microservices (Python, Flask, Express)
+-   **Document Intelligence Service (`/OCR`)**: An Express.js server acts as a receiver for file uploads. It uses Node.js's `spawn` to invoke a Python script (`bills_and_expense.py`). The Python script leverages **OpenCV** for image preprocessing and **EasyOCR** for robust text extraction. The raw text is then passed to the **Google Gemini API** for intelligent structuring and JSON conversion.
 -   **RAG Tax Chatbot Service (`/PlakshaChatbot`)**: A Flask-based service that implements a classic Retrieval-Augmented Generation pipeline.
     -   **Indexing**: Tax law PDFs are loaded using `PyPDFLoader`, split into chunks, and vectorized using **Hugging Face Embeddings** (`sentence-transformers/all-MiniLM-L6-v2`).
     -   **Storage**: The vectors are stored and indexed in a **FAISS** vector store for fast semantic search.
@@ -78,7 +75,7 @@ Our implementation showcases a modern, full-stack approach to building AI applic
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | **Frontend**          | **Next.js 15**, **React 19**, **Redux Toolkit**, **Tailwind CSS 4**, **Framer Motion**, Axios, `react-dropzone`, `lucide-react` |
 | **Backend Gateway**   | **Node.js**, Next.js API Routes, Express.js                                                                             |
-| **AI Microservices**  | **Python 3**, **Flask**                                                                                                |
+| **AI Microservices**  | **Python 3**, **Flask**, **OpenCV**, **EasyOCR**                                                                       |
 | **Database**          | **MongoDB**, **Mongoose** (for user data)                                                                              |
 | **Vector Database**   | **FAISS** (Facebook AI Similarity Search)                                                                              |
 | **AI & LLMs**         | **Google Gemini**, **OpenAI GPT-4o**, **LangChain**, **Hugging Face Transformers**                                     |
@@ -94,10 +91,12 @@ Our implementation showcases a modern, full-stack approach to building AI applic
 -   MongoDB (a local instance or a free cloud service like MongoDB Atlas)
 
 ### 1. Environment Configuration
-Create a `.env` file in the root directory and populate it with your credentials.
+Properly configuring environment variables is crucial for the application to run.
 
+#### A. Root `.env` file (for the Next.js Frontend)
+In the project's root directory, create a `.env` file with the following variables. These are used by the Next.js application.
 ```bash
-# .env (example)
+# .env (Root Directory)
 
 # MongoDB Connection String
 MONGODB_URI="ENTER-YOUR-MONGODB-URI"
@@ -105,30 +104,41 @@ MONGODB_URI="ENTER-YOUR-MONGODB-URI"
 # JWT Secret for Authentication
 JWT_SECRET="this-is-a-very-strong-and-long-secret-key-for-jwt-signing"
 
-# External API Keys for AI Services
-GEMINI_API_KEY="your_google_gemini_api_key"
-OPENAI_API_KEY="your_openai_api_key"
-
 # Email Service for Verification
 RESEND_API_KEY="your_resend_api_key"
 ```
 
-### 2. Installation & Running the App
+#### B. Microservice `.env` files (for Python Backends)
+Each Python microservice requires its own `.env` file inside its respective directory (`PlakshaChatbot/`, `PlakshaRec/`, `OCR/`).
 
+-   **For `/PlakshaChatbot`:**
+    ```bash
+    # PlakshaChatbot/.env
+    OPENAI_API_KEY="your_openai_api_key"
+    ```
+-   **For `/PlakshaRec`:**
+    ```bash
+    # PlakshaRec/.env
+    GEMINI_API_KEY="your_google_gemini_api_key"
+    ```
+-   **For `/OCR`:**
+    ```bash
+    # OCR/.env
+    GEMINI_API_KEY="your_google_gemini_api_key"
+    ```
+
+### 2. Installation & Running the App
 1.  **Clone the Repository:**
     ```bash
     git clone https://github.com/your-username/bachatbot.git
     cd bachatbot
     ```
-
 2.  **Install Frontend Dependencies:**
     ```bash
     npm install
     ```
-
 3.  **Setup Python Microservices:**
-    For each Python service (`PlakshaChatbot`, `PlakshaRec`), create a virtual environment and install its dependencies.
-
+    For each Python service, create a virtual environment and install its dependencies.
     ```bash
     # Example for the Chatbot service
     cd PlakshaChatbot
@@ -137,33 +147,38 @@ RESEND_API_KEY="your_resend_api_key"
     pip install -r requirements.txt
     cd ..
     ```
-    *(Repeat for all relevant Python service directories.)*
-
+    *(Repeat for all Python service directories.)*
 4.  **Start the Backend Services:**
-    Open separate terminals for each service, activate their environments, and run them. They are configured to run on different ports.
+    Open separate terminals for each service, activate their environments, and run them.
     ```bash
-    # Terminal 1: Chatbot Service (Port 5000)
+    # Terminal 1: OCR Document Service (Port 3002)
+    cd OCR && npm install && nodemon index.js
+
+    # Terminal 2: Chatbot Service (Port 5000)
     cd PlakshaChatbot && source venv/bin/activate && python app.py
 
-    # Terminal 2: Recommendation Service (Port 7000)
+    # Terminal 3: Recommendation Service (Port 7000)
     cd PlakshaRec && source venv/bin/activate && python app.py
     ```
-
 5.  **Start the Frontend:**
     In a new terminal at the project root:
     ```bash
     npm run dev
     ```
-
 6.  **Access BachatBot:** Open your browser and go to `http://localhost:3000`.
 
 ## ⚠️ A Note on Intellectual Property and Project Scope
-
 This repository has been prepared for the AI Hiring Show evaluation process. It is designed to showcase our project's architecture, functionality, and the technical expertise of our team.
 
 > To protect our intellectual property and the unique innovations developed during the competition, some of our core AI logic, proprietary scripts, and fine-tuned models have been abstracted or are not included in this public repository. The code provided is sufficient to run a demonstrable version of the platform, but may exceed certain file size limits for direct hosting.
 >
 > **For a complete, live demonstration of the end-to-end system and a deep dive into our core AI pipeline, please contact a member of our team.**
+
+## 📞 Contact & Technical Support
+For any technical questions, setup assistance, or to request a live demonstration, please feel free to reach out:
+
+-   **Email**: [akshatsaraswat1234@gmail.com](mailto:akshatsaraswat1234@gmail.com)
+-   **Phone**: `+91 6260109043`
 
 ## 👥 The Team
 *   **Akshat Saraswat**
