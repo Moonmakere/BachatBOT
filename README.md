@@ -5,7 +5,7 @@
   <img src="Screenshot 2025-07-07 232418.png" alt="BachatBot Banner"/>
 </p>
 
-**🏆 1st Place Winner (out of 1000+ Teams) | AI Hiring Show by Rabbitt Learning 🏆**
+**🏆 1st Place Winner (out of 500+ Registations) | AI Hiring Show by Rabbitt Learning 🏆**
 
 **BachatBot** is a sophisticated, AI-driven financial assistant designed to demystify personal finance for the Indian market. Born from the **AI Hiring Show by Rabbitt Learning**, where it secured **1st Place out of over 1000 participating teams**, BachatBot provides personalized banking, insurance, and tax advisory services, empowering users to make brilliant financial decisions with ease and confidence.
 
