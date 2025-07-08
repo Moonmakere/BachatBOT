@@ -82,12 +82,12 @@ Our implementation showcases a modern, full-stack approach to building AI applic
 
 #### 3. AI/ML Microservices (Python, Flask, Express)
 -   **Document Intelligence Service (`/OCR`)**: An Express.js server acts as a receiver for file uploads. It uses Node.js's `spawn` to invoke a Python script (`bills_and_expense.py`). The Python script leverages **OpenCV** for image preprocessing and **EasyOCR** for robust text extraction. The raw text is then passed to the **Google Gemini API** for intelligent structuring and JSON conversion.
--   **RAG Tax Chatbot Service (`/PlakshaChatbot`)**: A Flask-based service that implements a classic Retrieval-Augmented Generation pipeline.
+-   **RAG Tax Chatbot Service (`/ChatBot`)**: A Flask-based service that implements a classic Retrieval-Augmented Generation pipeline.
     -   **Indexing**: Tax law PDFs are loaded using `PyPDFLoader`, split into chunks, and vectorized using **Hugging Face Embeddings** (`sentence-transformers/all-MiniLM-L6-v2`).
     -   **Storage**: The vectors are stored and indexed in a **FAISS** vector store for fast semantic search.
     -   **Retrieval**: On receiving a query, the service retrieves the most relevant document chunks from FAISS.
     -   **Generation**: The retrieved context and the user's query are passed to an LLM (**OpenAI/Gemini**) via **LangChain** to generate a contextually accurate answer.
--   **Tax & Recommendation Service (`/PlakshaRec`)**: A Flask service that exposes a `/generate-report` endpoint. It contains the business logic to calculate tax liabilities for both Old and New regimes and then queries the **Google Gemini** API with a structured prompt to generate personalized financial and investment insights.
+-   **Tax & Recommendation Service (`/Rec_Bachat`)**: A Flask service that exposes a `/generate-report` endpoint. It contains the business logic to calculate tax liabilities for both Old and New regimes and then queries the **Google Gemini** API with a structured prompt to generate personalized financial and investment insights.
 
 ## 🛠️ Technology Stack
 
@@ -129,16 +129,16 @@ RESEND_API_KEY="your_resend_api_key"
 ```
 
 #### B. Microservice `.env` files (for Python Backends)
-Each Python microservice requires its own `.env` file inside its respective directory (`PlakshaChatbot/`, `PlakshaRec/`, `OCR/`).
+Each Python microservice requires its own `.env` file inside its respective directory (`ChatBot/`, `Rec_Bachat/`, `OCR/`).
 
--   **For `/PlakshaChatbot`:**
+-   **For `/ChatBot`:**
     ```bash
-    # PlakshaChatbot/.env
+    # ChatBot/.env
     OPENAI_API_KEY="your_openai_api_key"
     ```
--   **For `/PlakshaRec`:**
+-   **For `/Rec_Bachat`:**
     ```bash
-    # PlakshaRec/.env
+    # Rec_Bachat/.env
     GEMINI_API_KEY="your_google_gemini_api_key"
     ```
 -   **For `/OCR`:**
@@ -161,7 +161,7 @@ Each Python microservice requires its own `.env` file inside its respective dire
     For each Python service, create a virtual environment and install its dependencies.
     ```bash
     # Example for the Chatbot service
-    cd PlakshaChatbot
+    cd ChatBot
     python -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
     pip install -r requirements.txt
@@ -175,10 +175,10 @@ Each Python microservice requires its own `.env` file inside its respective dire
     cd OCR && npm install && nodemon index.js
 
     # Terminal 2: Chatbot Service (Port 5000)
-    cd PlakshaChatbot && source venv/bin/activate && python app.py
+    cd ChatBot && source venv/bin/activate && python app.py
 
     # Terminal 3: Recommendation Service (Port 7000)
-    cd PlakshaRec && source venv/bin/activate && python app.py
+    cd Rec_Bachat && source venv/bin/activate && python app.py
     ```
 5.  **Start the Frontend:**
     In a new terminal at the project root:
