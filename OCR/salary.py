@@ -89,7 +89,7 @@ def master_function():
         image_final = load_image(annotated_image)
 
         # Configure Google Gemini API
-        genai.configure(api_key="AIzaSyC7GK9bFtQ1tbAW6Ld97cqKJ48nblLDIgg")  # 🔴 REPLACE WITH YOUR ACTUAL API KEY
+        genai.configure(api_key="xyz")  # 🔴 REPLACE WITH YOUR ACTUAL API KEY
         model = genai.GenerativeModel("gemini-1.5-flash")
 
         # Generate structured JSON response using AI
