@@ -1,0 +1,38 @@
+{
+    "personal_details": {
+        "name": "Rahul Sharma",
+        "pan": "ABCDE1234F",
+        "aadhaar": "1234-5678-9101",
+        "age": 29,
+        "employment_type": "Salaried"
+    },
+    "income_details": {
+        "salary_income": 1200000,
+        "rental_income": 150000,
+        "business_income": 0,
+        "interest_income": 50000,
+        "other_income": 20000
+    },
+    "deductions": {
+        "section_80C": 150000,
+        "section_80D": 25000,
+        "section_24B": 200000,
+        "nps_contribution": 50000
+    },
+    "exemptions": {
+        "hra_exemption": 100000,
+        "lta_exemption": 20000,
+        "other_exemptions": 15000
+    },
+    "investments": {
+        "ppf": 70000,
+        "elss": 30000,
+        "nps": 50000,
+        "fd_tax_saving": 25000
+    },
+    "tax_paid": {
+        "tds": 80000,
+        "advance_tax": 10000,
+        "self_assessment_tax": 5000
+    }
+}
