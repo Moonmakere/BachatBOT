@@ -37,6 +37,26 @@ BachatBot is an AI-powered system designed to be the ultimate financial co-pilot
 -   **☂️ AI Insurance Advisor**: A dedicated module that connects to a Streamlit-powered interface, helping users find the best insurance policies (term, health, etc.) tailored to their age, income, and risk profile.
 -   **🔒 Secure User Authentication & Profile Management**: A complete auth system with JWT, email verification, and a detailed user profile manager.
 
+
+### ✨ Feature Spotlight: AI Insurance Advisor
+
+Navigating the complex world of insurance is a major challenge. To address this, BachatBot includes a dedicated **AI Insurance Advisor**, an interactive tool designed to help users find the perfect policies tailored to their unique financial situation and life stage.
+
+The advisor is seamlessly integrated into the main dashboard, providing a specialized environment for in-depth analysis without cluttering the primary user experience. It turns a confusing process into a simple conversation.
+
+| 1. Start the Conversation | 2. Get Instant, Personalized Analysis | 3. Receive Actionable Advice |
+| :------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------: |
+| ![AI Insurance Advisor Welcome Screen](AI%20INSURANCE%20BUDDY%20-%201.png) | ![AI Insurance Advisor Full UI](AI%20INSURANCE%20BUDDY%20-%202.png) | ![AI Insurance Advisor Detailed Calculation](AI%20INSURANCE%20BUDDY%20-%203.png) |
+| *The advisor begins with a simple, conversational prompt, making it easy for users to provide their details.* | *The AI immediately processes the user's profile within a full-featured interface to begin the recommendation process.* | *Users receive a clear, transparent breakdown of the recommended coverage and its estimated premium.* |
+
+### Technical Rationale: Why Streamlit?
+
+We chose **Streamlit** for the AI Insurance Advisor to leverage its strengths in rapidly building interactive, data-centric applications. This architectural decision allows us to:
+
+-   **Decouple Specialized Tools:** Keep the main Next.js application lean and focused on core financial management, while offering a powerful, dedicated tool for a specific, complex task like insurance planning.
+-   **Accelerate Development:** Quickly iterate on the insurance analysis model and its user interface without needing to redeploy the entire core application.
+-   **Provide Rich Interactivity:** Enable complex data visualizations, sliders for risk assessment, and real-time feedback that are native to data science workflows, providing a superior user experience for this specific feature.
+
 ## 🏗️ Technical Architecture
 
 BachatBot employs a robust microservices architecture, separating the frontend presentation layer from the specialized AI/ML backend services. This design ensures scalability, maintainability, and resilience.
