@@ -4,10 +4,7 @@
 <p align="center">
   <img src="Screenshot 2025-07-07 232418.png" alt="BachatBot Banner"/>
 </p>
-
-**🏆 1st Place Winner (out of 500+ Registations) | AI Hiring Show by Rabbitt Learning 🏆**
-
-**BachatBot** is a sophisticated, AI-driven financial assistant designed to demystify personal finance for the Indian market. Born from the **AI Hiring Show by Rabbitt Learning**, where it secured **1st Place out of over 1000 participating teams**, BachatBot provides personalized banking, insurance, and tax advisory services, empowering users to make brilliant financial decisions with ease and confidence.
+**BachatBot** is a sophisticated, AI-driven financial assistant designed to demystify personal finance for the Indian market. BachatBot provides personalized banking, insurance, and tax advisory services, empowering users to make brilliant financial decisions with ease and confidence.
 
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
@@ -187,17 +184,5 @@ Each Python microservice requires its own `.env` file inside its respective dire
     ```
 6.  **Access BachatBot:** Open your browser and go to `http://localhost:3000`.
 
-## ⚠️ A Note on Intellectual Property and Project Scope
-This repository has been prepared for the AI Hiring Show evaluation process. It is designed to showcase our project's architecture, functionality, and the technical expertise of our team.
-
-> To protect our intellectual property and the unique innovations developed during the competition, some of our core AI logic, proprietary scripts, and fine-tuned models have been abstracted or are not included in this public repository. The code provided is sufficient to run a demonstrable version of the platform, but may exceed certain file size limits for direct hosting.
->
-> **For a complete, live demonstration of the end-to-end system and a deep dive into our core AI pipeline, please contact a member of our team.**
-
-## 📞 Contact & Technical Support
-For any technical questions, setup assistance, or to request a live demonstration, please feel free to reach out to the following:
-
--   **Email**: [akshatsaraswat1234@gmail.com](mailto:akshatsaraswat1234@gmail.com)
--   **Phone**: `+91 6260109043`
 
 
