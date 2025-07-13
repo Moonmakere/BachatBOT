@@ -4,8 +4,8 @@ from flask_cors import CORS
 import os
 from dotenv import load_dotenv
 
-# ✅ Load environment variables from .env file
-env_path = r"C:\\Users\\aksha\\OneDrive\\Desktop\\EZTax-Plaksha-main\\PlakshaChatbot\\.env"  # Ensure correct path
+# ✅ Load environment variables from .env file  (C:\\Users\\aksha\\OneDrive\\Desktop\\EZTax-Plaksha-main\\PlakshaChatbot\\.env)
+env_path = r"C:\Users\manta\OneDrive\Desktop\BachatBOT\bachatbot\chatbot\.env"  # Ensure correct path
 load_dotenv(env_path)
 
 # ✅ Get API key from environment (no hardcoding)
@@ -48,5 +48,6 @@ def chat():
         print(f"❌ Error in /chat: {e}")
         return jsonify({ "error": str(e) }), 500
 
-if __name__ == "_main_":
+if __name__ == "__main__":
+    print("🚀 Flask app is starting...")
     app.run(debug=True, host="0.0.0.0", port=5000)
